@@ -1,8 +1,12 @@
-// import {DrawerMenu} from '..../component/DrawerMenu';
+import React from 'react';
+import { GroupButton } from '../component/GroupButton';
+// import {DrawerMenu} from '../component/DrawerMenu';
 import {
   Dimensions,
+  FlatList,
   Image,
   StyleSheet,
+  Text,
   View
 } from "react-native";
 
@@ -29,7 +33,7 @@ const grupos_ficha = [
   // {
   //   id: 'carnes',
   //   name: 'Carnes',
-  //   backgroundColor: '#F39C12',
+  //   backgroundColor: '#f33f12ff',
   // },
 ];
 
@@ -41,11 +45,35 @@ export default function Index() {
   return (
     <View style={styles.container}>
       
-      {/* Imagem de Fundo (Prato) - USANDO REQUIRE */}
+      {/* Imagem de Fundo (Prato) - USANDO REQUIRE, buscar se há outra forma de referenciar fora deste index */}
       <Image
         source={imagemFundo} // Usa o require()
         style={styles.backgroundImage}
       />
+
+      {/* Conteúdo Central: a partir daqui o título e a FlatList */}
+      <View style={styles.content}>
+          <Text style={styles.title}>PRATOS DO DIA</Text>
+
+      {/* Lista de Categorias : FlatList é o componente para renderisar rolagem de filas longas
+      recomendado o uso junto a ScrollView para não renderizar itens não visíveis na tela, nesse caso utilizando contentContainerStyle*/}
+        <FlatList
+          data={grupos_ficha}
+          keyExtractor={(item) => item.id}
+          // Passando as props para o componet GroupButton
+          renderItem={({ item }) => (
+            <GroupButton 
+              name={item.name}
+              onPress={() => handleCategoryPress(item.id)} 
+              backgroundColor={item.backgroundColor} 
+            />
+          )}
+          contentContainerStyle={styles.listContainer}
+        />
+
+      </View>
+
+
       </View>
   );
 }
@@ -66,5 +94,23 @@ const styles = StyleSheet.create({
     top: height * 0.25, // Ajuste de posicionamento
     resizeMode: 'contain',
     opacity: 0.5,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#333',
+    marginBottom: 40,
+    letterSpacing: 2,
+  },
+  content: {
+    flex: 1,
+    alignItems: 'center',
+    marginTop: height * 0.1, // Empurra o conteúdo para baixo
+    zIndex: 1, // Garantir que o conteúdo principal esteja na frente
+  },
+  listContainer: {
+    alignItems: 'center',
+    paddingBottom: 20,
+    width: Dimensions.get('window').width, // Garante que o FlatList ocupe toda a largura
   },
 })
