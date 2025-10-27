@@ -64,6 +64,7 @@ export const DrawerMenu = ({ isOpen, onClose }) => {
 
 const styles = StyleSheet.create({
     overlay: {
+        // Não há fundo nos botões , testar transparencia
         // Cobre toda a tela
         ...StyleSheet.absoluteFillObject,
         zIndex: 100, 
@@ -99,7 +100,7 @@ const styles = StyleSheet.create({
     },
     drawerItem: {
         paddingVertical: 30, // Espaçamento maior entre os itens para imitar o design
-        // Não há fundo nos botões
+        
     },
     drawerItemText: {
         fontSize: 20,

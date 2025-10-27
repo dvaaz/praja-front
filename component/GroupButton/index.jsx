@@ -1,9 +1,9 @@
 import { Pressable, StyleSheet, Text } from "react-native";
 
-export const ActionButton = ({ name, buttonColor, onPress }) => {
+export const GroupButton = ({ name, buttonColor, onPress }) => {
     return (
         <Pressable
-            style={[styles.categoryButton, { buttonColor: buttonColor }]}
+            style={[styles.categoryButton, { backgroundColor: buttonColor }]}
             onPress={onPress}
         >
              <Text style={styles.buttonText}>{name}</Text>
@@ -13,9 +13,9 @@ export const ActionButton = ({ name, buttonColor, onPress }) => {
 
 const styles = StyleSheet.create({
     categoryButton: {
-        width: '70%',
+        width: '120%',
         paddingVertical: 15,
-        borderRadius: 8,
+        borderRadius: 5,
         marginBottom: 20,
         alignItems: "center",
 
@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
     buttonText: {
         color: '#FFF',
         fontSize: 20,
+        padding: 5,
         fontWeight: '600',
     },
 });

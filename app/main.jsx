@@ -1,14 +1,16 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { GroupButton } from '../component/GroupButton';
-// import {DrawerMenu} from '../component/DrawerMenu';
+import {DrawerMenu} from '../component/DrawerMenu';
 import {
   Dimensions,
   FlatList,
   Image,
   StyleSheet,
   Text,
-  View
+  View,
+  TouchableOpacity // abre e fecha o menu
 } from "react-native";
+
 
   // imagem provavelmente há um lugar melhor para o acesso
   const imagemFundo = require('../assets/images/praja_gemini_generated.png');
@@ -17,7 +19,7 @@ const grupos_ficha = [
   {
     id: 'massas',
     name: 'Massas',
-    backgroundColor: '#E74C3C', // Vermelho
+    backgroundColor: '#af6032ff', // Vermelho
   },
   {
     id: 'doces',
@@ -30,17 +32,23 @@ const grupos_ficha = [
     backgroundColor: '#2ECC71', // Verde
   },
   // teste
-  // {
-  //   id: 'carnes',
-  //   name: 'Carnes',
-  //   backgroundColor: '#f33f12ff',
-  // },
+  {
+    id: 'carnes',
+    name: 'Carnes',
+    backgroundColor: '#f33f12ff',
+  },
 ];
 
-const { height } = Dimensions.get('window');
+const { height } = Dimensions.get('window'); // vai obter o tamanho da janela para fazer ajustes dinamicos no css
 
-export default function Index() {
+export default function Main() {
+ 
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false); //
 
+  const handleCategoryPress = (categoryId) => {
+      console.log(`Categoria selecionada: ${categoryId}`);
+      // Futuramente: navigation.navigate()
+    };
 
   return (
     <View style={styles.container}>
@@ -50,11 +58,26 @@ export default function Index() {
         source={imagemFundo} // Usa o require()
         style={styles.backgroundImage}
       />
+        
+        {/* Gaveta: HEADER COM O BOTÃO DE ABRIR O MENU (☰)
+        Chamada da gaveta */}
+        <View style={styles.header}>
+          <TouchableOpacity onPress={() => setIsDrawerOpen(true)}>
+            <Text style={styles.drawerIcon}>☰</Text> 
+          </TouchableOpacity>
+        </View>
 
+        <DrawerMenu
+        isOpen={isDrawerOpen}
+        onClose={() => setIsDrawerOpen(false)}
+        />
+        
       {/* Conteúdo Central: a partir daqui o título e a FlatList */}
       <View style={styles.content}>
           <Text style={styles.title}>PRATOS DO DIA</Text>
 
+
+      
       {/* Lista de Categorias : FlatList é o componente para renderisar rolagem de filas longas
       recomendado o uso junto a ScrollView para não renderizar itens não visíveis na tela, nesse caso utilizando contentContainerStyle*/}
         <FlatList
@@ -65,10 +88,10 @@ export default function Index() {
             <GroupButton 
               name={item.name}
               onPress={() => handleCategoryPress(item.id)} 
-              backgroundColor={item.backgroundColor} 
+              buttonColor={item.backgroundColor}
             />
           )}
-          contentContainerStyle={styles.listContainer}
+              contentContainerStyle={styles.listContainer}
         />
 
       </View>
@@ -89,11 +112,11 @@ const styles = StyleSheet.create({
   // gemini
   backgroundImage: {
     position: 'absolute',
-    width: '100%',
-    height: '65%', 
-    top: height * 0.25, // Ajuste de posicionamento
+    width: '120%',
+    height: '100%', 
+    top:  height* -0.25, // Ajuste de posicionamento
     resizeMode: 'contain',
-    opacity: 0.5,
+    opacity: 0.2,
   },
   title: {
     fontSize: 24,
