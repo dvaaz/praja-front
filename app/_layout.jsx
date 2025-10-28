@@ -1,5 +1,4 @@
 import { Drawer } from 'expo-router/drawer';
-import { StyleSheet } from 'react-native';
 
 // https://docs.expo.dev/router/advanced/drawer/
 export default function RootLayout() {
@@ -36,13 +35,3 @@ export default function RootLayout() {
     </Drawer>
   );
 }
-
-const styles = StyleSheet.create ({
-  title: {
-    fontSize: 32,
-    fontWeight: "bold",
-    color: '#333',
-    marginBottom: 40,
-    letterSpacing: 2,
-  },
-})

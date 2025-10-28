@@ -8,7 +8,7 @@ import {
 
 const { weight } = Dimensions.get("window");
 
-export const GroupButton = ({ name, buttonColor, textColor, onPress }) => {
+export const NavigationButton = ({ name, buttonColor, textColor, onPress }) => {
     return (
         <Pressable
             style={[styles.categoryButton, { backgroundColor: buttonColor }]}

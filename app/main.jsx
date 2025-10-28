@@ -3,13 +3,12 @@ import React from "react";
 import {
   Dimensions,
   FlatList,
-  // Image,
   StyleSheet,
   View
 } from "react-native";
 
-import { GroupButton } from "../component/GroupButton";
-import { ImagemFundo } from "../component/ImagemFundo";
+import { ImagemFundo } from "../component/ImagemFundo/index.jsx";
+import { NavigationButton } from "../component/NavigationButton/index.jsx";
 
 
  // mock data
@@ -65,9 +64,9 @@ export default function Main() {
         <FlatList
           data={grupos_ficha}
           keyExtractor={(item) => item.id}
-          // Passando as props para o componet GroupButton
+          // Passando as props para o componet NavigationButton
           renderItem={({ item }) => (
-            <GroupButton 
+            <NavigationButton 
               name={item.name}
               onPress={() => handleCategoryPress(item.id)} 
               buttonColor={item.corDeFundo}
