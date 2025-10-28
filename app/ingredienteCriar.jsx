@@ -1,6 +1,7 @@
 import { useState } from "react";
 import {
     Dimensions,
+    Picker,
     StyleSheet,
     Text,
     View
