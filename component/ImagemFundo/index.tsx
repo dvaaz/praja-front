@@ -24,7 +24,7 @@ const styles = StyleSheet.create ({
     height: '100%', 
     top:  height* -0.15, // Ajuste de posicionamento
     resizeMode: 'contain',
-    opacity: 0.2,
+    opacity: 0.1,
   },
 })
   

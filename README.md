@@ -7,7 +7,8 @@
 
    ```bash
    npm install
-   npx expo install @react-navigation/drawer react-native-reanimated react-native-worklets
+   npx expo install @react-navigation/drawer react-native-reanimated 
+   npm install @react-native-picker/picker --save
    ```
 
 2. Start the app

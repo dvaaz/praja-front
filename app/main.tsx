@@ -7,8 +7,8 @@ import {
   View
 } from "react-native";
 
-import { ImagemFundo } from "../component/ImagemFundo/index.jsx";
-import { NavigationButton } from "../component/NavigationButton/index.jsx";
+import { ImagemFundo } from "../component/ImagemFundo/index";
+import { NavigationButton } from "../component/NavigationButton/index";
 
 
  // mock data
@@ -45,7 +45,7 @@ const { height, width } = Dimensions.get("window"); // vai obter o tamanho da ja
 export default function Main() {
 
 
-  const handleCategoryPress = (categoryId) => {
+  const handleCategoryPress = (categoryId:string) => {
       console.log(`Categoria selecionada: ${categoryId}`);
       // Futuramente: navigation.navigate()
     };
@@ -68,7 +68,7 @@ export default function Main() {
           renderItem={({ item }) => (
             <NavigationButton 
               name={item.name}
-              onPress={() => handleCategoryPress(item.id)} 
+              onPress={()=>handleCategoryPress(item.id)} 
               buttonColor={item.corDeFundo}
               textColor={item.corDeTexto}
             />
