@@ -1,8 +1,8 @@
 import { useNavigation } from "@react-navigation/native";
 import { Dimensions, FlatList, StyleSheet, View } from "react-native";
 
-import { ImagemFundo } from "../component/ImagemFundo";
-import { NavigationButton } from "../component/NavigationButton";
+import { ImagemFundo } from "../../component/ImagemFundo";
+import { NavigationButton } from "../../component/NavigationButton";
 
 const { height, width } = Dimensions.get("window");
 

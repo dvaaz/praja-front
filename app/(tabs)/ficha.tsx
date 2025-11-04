@@ -1,15 +1,15 @@
 import {
-    Dimensions,
-    FlatList,
-    StyleSheet,
-    View
+  Dimensions,
+  FlatList,
+  StyleSheet,
+  View
 } from "react-native";
 
-import { ImagemFundo } from "../component/ImagemFundo";
-import { NavigationButton } from "../component/NavigationButton";
+import { ImagemFundo } from "../../component/ImagemFundo";
+import { NavigationButton } from "../../component/NavigationButton";
 
 
-const { weight, height, width } = Dimensions.get("window");
+const {height, width } = Dimensions.get("window");
 // variaveis que trarão hyperlinks hyperlinks
 const opcoes = [
     {
@@ -27,7 +27,17 @@ const opcoes = [
     },
 ];
 
+  type Category = {
+    id: string;
+    name: string;
+    corDeFundo: string;
+    corDeTexto: string;
+    // link?: string;
+  };
+
 export default function Ficha() {
+
+
 
       const handleCategoryPress = (categoryId) => {
       console.log(`Categoria selecionada: ${categoryId}`);
