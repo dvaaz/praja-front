@@ -1,10 +1,8 @@
 import { useNavigation } from "@react-navigation/native";
-import { Dimensions, FlatList, StyleSheet, View } from "react-native";
+import { FlatList, StyleSheet, View } from "react-native";
 
 import { ImagemFundo } from "../../component/ImagemFundo";
 import { NavigationButton } from "../../component/NavigationButton";
-
-const { height, width } = Dimensions.get("window");
 
 const opcoes = [
   {
@@ -67,13 +65,13 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
     alignItems: "center",
-    marginTop: height * 0.1,
+    marginTop: 0.1,
     zIndex: 1
   },
   listContainer: {
     alignItems: "center",
-    marginTop: height * 0.2,
+    marginTop: 0.2,
     paddingBottom: 20,
-    width: width * 0.75
+    width: 0.75
   }
 });

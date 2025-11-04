@@ -21,7 +21,7 @@ export const GroupPlates = ({ groupName, groupColor, dishes }: GroupPlatesProps)
   const [expanded, setExpanded] = useState(false);
 
   // Exibe notificação se algum prato tiver quantidade >= 5
-  const showNotification = dishes.some((dish) => dish.quantity >= 5);
+  const showNotification = dishes.some((dish) => dish.quantity <= 5);
 
   return (
     <View style={styles.groupContainer}>
@@ -35,7 +35,7 @@ export const GroupPlates = ({ groupName, groupColor, dishes }: GroupPlatesProps)
           <Text style={styles.groupTitle}>{groupName}</Text>
         </View>
         {showNotification && (
-            <LuBellRing name="bell" size={20} color="yellow" />
+            <LuBellRing name="bell" size={20} color="#d61002ff" />
 
         )}
       </TouchableOpacity>

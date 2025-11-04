@@ -1,13 +1,13 @@
+import { Picker } from "@react-native-picker/picker";
 import { useState } from "react";
 import {
   Dimensions,
   StyleSheet,
   Text,
-  View,
-  TextInput
+  TextInput,
+  View
 } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
-import { Picker } from "@react-native-picker/picker";
 import { ImagemFundo } from "../component/ImagemFundo";
 
 const { height, width } = Dimensions.get("window");
@@ -98,6 +98,8 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
+    width: '100%',
+    height: '100%',
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#FFF5F5",

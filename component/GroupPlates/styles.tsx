@@ -17,7 +17,8 @@ groupContainer: {
   groupTitle: {
     fontSize: 18,
     fontWeight: "bold",
-    color: "#fff",
+    color: "#000",
+    alignSelf: "center",
   },
     colorSquare: {
     width: 18,
