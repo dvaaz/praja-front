@@ -1,4 +1,4 @@
-// import { Ionicons } from "@expo/vector-icons";
+
 import React, { useState } from "react";
 import { LuBellRing } from "react-icons/lu";
 import { FlatList, Text, TouchableOpacity, View } from "react-native";
@@ -27,13 +27,16 @@ export const GroupPlates = ({ groupName, groupColor, dishes }: GroupPlatesProps)
     <View style={styles.groupContainer}>
       <TouchableOpacity
         activeOpacity={0.9}
-        style={[styles.groupHeader, { backgroundColor: groupColor }]}
-        onPress={() => setExpanded(!expanded)}
+        style={styles.groupHeader}
+        onPress={() => setExpanded((prev) => !prev)}
       >
-        <Text style={styles.groupTitle}>{groupName}</Text>
+        <View style={styles.headerLeft}>
+          <View style={[styles.colorSquare, { backgroundColor: groupColor }]} />
+          <Text style={styles.groupTitle}>{groupName}</Text>
+        </View>
         {showNotification && (
             <LuBellRing name="bell" size={20} color="yellow" />
-        //   <Ionicons name="notifications" size={20} color="yellow" />
+
         )}
       </TouchableOpacity>
 
