@@ -11,7 +11,7 @@ export default function Home() {
       dishes: [
         { name: "Fraldinha ao Pomodoro", quantity: 23 },
         { name: "Bife Oswaldo Aranha", quantity: 27 },
-        { name: "Filé Mignon na Manteiga", quantity: 4},
+        { name: "Filé Mignon na Manteiga", quantity: 31},
         { name: "Ossobuco ao Molho Madeira", quantity: 19 },
       ],
     },
@@ -33,7 +33,12 @@ export default function Home() {
       groupName: "Sobremesas",
       groupColor: "#F48FB1", // rosa
       dishes: [
-        // aqui virao  os pratos da api
+        { name: "Pudim de Cassis", quantity: 23 },
+        { name: "Mousse de Maracujá", quantity: 27 },
+        { name: "Torta de Abacaxi", quantity: 12},
+        { name: "Romeu e Julieta", quantity: 19 },
+        { name: "Torta de Limão", quantity: 7 },
+        { name: "Cheesecake de Frutas Vermelhas", quantity: 4 },
       ],
     },
   ];
