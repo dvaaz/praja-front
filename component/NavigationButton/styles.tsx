@@ -2,10 +2,12 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
     categoryButton: {
-        width: '100%',
-        paddingVertical: 15,
+        width: '80%',
+        alignSelf: "center",
+        paddingVertical: 14,
         padding: 50,
-        borderRadius: 8,
+        alignItems: "center",
+        borderRadius: 16,
         marginBottom: 20,
         borderWidth: 1.5
     },

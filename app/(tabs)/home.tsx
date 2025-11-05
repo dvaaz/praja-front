@@ -11,7 +11,7 @@ export default function Home() {
       dishes: [
         { name: "Fraldinha ao Pomodoro", quantity: 23 },
         { name: "Bife Oswaldo Aranha", quantity: 27 },
-        { name: "Filé Mignon na Manteiga", quantity: 15},
+        { name: "Filé Mignon na Manteiga", quantity: 4},
         { name: "Ossobuco ao Molho Madeira", quantity: 19 },
       ],
     },

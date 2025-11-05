@@ -7,23 +7,21 @@ import {
 import { ImagemFundo } from "../../component/ImagemFundo";
 import { NavigationButton } from "../../component/NavigationButton";
 
-
-
-// variaveis que trarão hyperlinks hyperlinks
 const opcoes = [
-    {
-        id:"create",
-        name: "Criar Nova Ficha Tecnica",
-        corDeFundo: "#FeFeFe",
-        corDeTexto: '#000000dc'
-        // link: "criarIngrediente"
-    },
-    {
-        id:"search",
-        name: "Buscar Ficha Tecnica",
-        corDeFundo: "#FEFEFE",
-        corDeTexto: '#000000dc'
-    },
+  {
+    id: "create",
+    name: "Criar Novo Ingrediente",
+    corDeFundo: "#FEFEFE",
+    corDeTexto: "#000000dc",
+    // link: "IngredienteCriar"
+  },
+  {
+    id: "search",
+    name: "Buscar Ingrediente",
+    corDeFundo: "#FEFEFE",
+    corDeTexto: "#000000dc",
+    // link: "IngredienteBuscar"
+  }
 ];
 
   type Category = {
@@ -33,8 +31,8 @@ const opcoes = [
     corDeTexto: string;
     // link?: string;
   };
-
-export default function Ficha() {
+ 
+export default function Ingrediente() {
 
 
 

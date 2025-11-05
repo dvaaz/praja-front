@@ -13,7 +13,7 @@ import { ImagemFundo } from "../component/ImagemFundo";
 const { height, width } = Dimensions.get("window");
 
 export default function IngredienteCriar() {
-  const unMedida = ["g", "ml", "unidade"];
+  const unMedida = ["g", "ml", "UN"];
   const gruposMock = [
     { id: "cereal", nome: "Cereal" },
     { id: "frango", nome: "Frango" },
@@ -95,6 +95,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: "#FFF5F5",
   },
   container: {
     flex: 1,
@@ -102,7 +103,6 @@ const styles = StyleSheet.create({
     height: '100%',
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#FFF5F5",
     gap: 40,
     paddingHorizontal: 20,
   },
