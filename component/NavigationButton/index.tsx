@@ -1,7 +1,8 @@
 import {
     TouchableOpacity,
     TouchableOpacityProps,
-    Text
+    Text,
+    View
 } from "react-native";
 import { styles } from "./styles";
 
@@ -13,13 +14,15 @@ type NavigationButtonProps = {
 
 export const NavigationButton = ({ name, buttonColor, textColor, ...rest }: NavigationButtonProps) => {
     return (
+        <View>
         <TouchableOpacity
             style={[styles.categoryButton, { backgroundColor: buttonColor }]}
             {...rest}
         >
-             <Text style={[styles.buttonText, {color: textColor}]}>
-                {name}</Text>
       </TouchableOpacity>
+                   <Text style={[styles.buttonText, {color: textColor}]}>
+                {name}</Text>
+        </View>
     );
 };
 
