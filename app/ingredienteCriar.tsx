@@ -1,14 +1,14 @@
+import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Picker } from "@react-native-picker/picker";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import {
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View
 } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { ImagemFundo } from "../component/ImagemFundo";
 
 
@@ -21,6 +21,7 @@ export default function IngredienteCriar() {
     { id: "ml", nome: "Mililitros" },
     { id: "UN", nome: "Unidade" }
   ];
+  // mock
   const gruposMock = [
     { id: "cereal", nome: "Cereal" },
     { id: "frango", nome: "Frango" },
@@ -35,14 +36,14 @@ export default function IngredienteCriar() {
 
 
   return (
-    <SafeAreaView style={styles.safe}>
+
       <View style={styles.container}>
         <TouchableOpacity
           onPress={() => router.back()}
           style={styles.backButton}
           accessibilityLabel="Voltar"
         >
-          <Text style={styles.backArrow}>‹</Text>
+          <FontAwesome style={styles.backArrow} size={28} name='arrow-left'  />
         </TouchableOpacity>
         <ImagemFundo />
 
@@ -154,7 +155,7 @@ export default function IngredienteCriar() {
           </TouchableOpacity>
           </View>
       </View>
-    </SafeAreaView>
+
 
   );
 }

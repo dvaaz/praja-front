@@ -4,63 +4,76 @@ import {
   View
 } from "react-native";
 
+import { useRouter } from "expo-router";
 import { ImagemFundo } from "../../component/ImagemFundo";
 import { NavigationButton } from "../../component/NavigationButton";
 
 
+// Props
+type CategoryProps = {
+  id: string;
+  name: string;
+  corDeFundo: string;
+  corDeTexto: string;
+};
 
-// variaveis que trarão hyperlinks hyperlinks
+
 const opcoes = [
-    {
-        id:"create",
-        name: "Criar Nova Ficha Tecnica",
-        corDeFundo: "#FeFeFe",
-        corDeTexto: '#000000dc'
-        // link: "criarIngrediente"
-    },
-    {
-        id:"search",
-        name: "Buscar Ficha Tecnica",
-        corDeFundo: "#FEFEFE",
-        corDeTexto: '#000000dc'
-    },
+  {
+    id: "create",
+    name: "Criar Nova Ficha Tecnica",
+    corDeFundo: "#FeFeFe",
+    corDeTexto: '#000000dc'
+  },
+  {
+    id: "search",
+    name: "Buscar Ficha Tecnica",
+    corDeFundo: "#FEFEFE",
+    corDeTexto: '#000000dc'
+  },
 ];
 
-  type Category = {
-    id: string;
-    name: string;
-    corDeFundo: string;
-    corDeTexto: string;
-    // link?: string;
-  };
+
 
 export default function Ficha() {
 
+  const router = useRouter();
 
-
-      const handleCategoryPress = (categoryName:any) => {
-      console.log(`Categoria selecionada: ${categoryName}`);
-      }
-      return (
-        <View style={styles.container}>
-            <ImagemFundo/>
-
-            <FlatList style={styles.content}
-            data={opcoes}
-            keyExtractor={(opcao) => opcao.id}
-            renderItem= {({item: opcao }) => (
-                <NavigationButton
-                    name ={opcao.name}
-                    onPress={() => handleCategoryPress(opcao.id)} // em breve um navigation
-                    buttonColor={opcao.corDeFundo}
-                    textColor={opcao.corDeTexto}
-                />
-            )}
-            contentContainerStyle={styles.listContainer}
-            />
-            </View>
-        );
+  const handleCategoryPress = (categoria: CategoryProps) => {
+    console.log(`Categoria selecionada: ${categoria.name}`);
+    // rota estática por id
+    switch (categoria.id) {
+      case "create":
+        router.push("/fichaCriar");
+        break;
+      case "search":
+        router.push("/fichaBuscar");
+        break;
+      default:
+        console.warn("Rota não configurada para", categoria.id);
     }
+  }
+
+  return (
+    <View style={styles.container}>
+      <ImagemFundo />
+
+      <FlatList style={styles.content}
+        data={opcoes}
+        keyExtractor={(opcao) => opcao.id}
+        renderItem={({ item: opcao }) => (
+          <NavigationButton
+            name={opcao.name}
+            onPress={() => handleCategoryPress(opcao)} // em breve um navigation
+            buttonColor={opcao.corDeFundo}
+            textColor={opcao.corDeTexto}
+          />
+        )}
+        contentContainerStyle={styles.listContainer}
+      />
+    </View>
+  );
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -70,7 +83,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFF5F5',
     height: '100%',
     width: '100%',
-    
+
   },
 
   content: {
