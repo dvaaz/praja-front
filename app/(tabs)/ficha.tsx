@@ -45,7 +45,7 @@ export default function Ficha() {
         <View style={styles.container}>
             <ImagemFundo/>
 
-            <FlatList
+            <FlatList style={styles.content}
             data={opcoes}
             keyExtractor={(opcao) => opcao.id}
             renderItem= {({item: opcao }) => (
@@ -68,17 +68,15 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: '#FFF5F5',
-    gap: 40,
     height: '100%',
     width: '100%',
+    
   },
 
   content: {
     flex: 1,
-    alignItems: "center",
-    // marginTop: height * 0.1, // Empurra o conteúdo para baixo
-    marginTop: "10%",
-    zIndex: 1, // Garantir que o conteúdo principal esteja na frente
+    paddingTop: "20%", // Empurra o conteúdo para baixo
+    width: '100%',
   },
   listContainer: {
     alignItems: "center", // centraliza os itens da FlatList

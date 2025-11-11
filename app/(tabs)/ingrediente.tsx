@@ -29,7 +29,7 @@ const opcoes = [
     name: string;
     corDeFundo: string;
     corDeTexto: string;
-    // link?: string;
+    link?: "ingredienteCriar";
   };
  
 export default function Ingrediente() {
@@ -43,7 +43,7 @@ export default function Ingrediente() {
         <View style={styles.container}>
             <ImagemFundo/>
 
-            <FlatList
+            <FlatList style={styles.content}
             data={opcoes}
             keyExtractor={(opcao) => opcao.id}
             renderItem= {({item: opcao }) => (
@@ -52,6 +52,7 @@ export default function Ingrediente() {
                     onPress={() => handleCategoryPress(opcao.id)} // em breve um navigation
                     buttonColor={opcao.corDeFundo}
                     textColor={opcao.corDeTexto}
+                    link={opcao.link}
                 />
             )}
             contentContainerStyle={styles.listContainer}
@@ -73,11 +74,10 @@ const styles = StyleSheet.create({
 
   content: {
     flex: 1,
-    alignItems: "center",
-    // marginTop: height * 0.1, // Empurra o conteúdo para baixo
-    marginTop: "10%",
-    zIndex: 1, // Garantir que o conteúdo principal esteja na frente
+    paddingTop: "20%", // Empurra o conteúdo para baixo
+    width: '100%',
   },
+
   listContainer: {
     alignItems: "center", // centraliza os itens da FlatList
     gap: 20,              // espaçamento entre botões
