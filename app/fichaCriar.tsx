@@ -1,21 +1,44 @@
 import { Picker } from "@react-native-picker/picker";
 import React, { useState } from "react";
-import { StyleSheet, Text, TextInput, View } from "react-native";
+import { FlatList, StyleSheet, Text, TextInput, View } from "react-native";
 
 
 export default function fichaCriar(){
 
-  const gruposMock = [
-    { id: "cereal", nome: "Vegetarianos" },
-    { id: "frango", nome: "Aves" },
-    { id: "bovino", nome: "Carnes" },
-    { id: "legumes", nome: "Sobremesas" }
+  type IngredienteProps ={
+    id: string;
+    name: string;
+  };
+
+  const gruposMock  = [
+    { id: "cereal", name: "Vegetarianos" },
+    { id: "frango", name: "Aves" },
+    { id: "bovino", name: "Carnes" },
+    { id: "legumes", name: "Sobremesas" }
   ];
+
+  const ingredienteMock: IngredienteProps[] =[
+    {id: "i1", name: "Sal"},
+    {id: "i2", name: "Açúcar"},
+    {id: "i3", name: "Farinha"},
+    {id: "i4", name: "Ovo"},
+    {id: "i5", name: "Leite"},
+    {id: "i6", name: "Manteiga"},
+    {id: "i7", name: "Fermento"},
+    {id: "i8", name: "Baunilha"},
+  ]
 
   // Hooks
   const [ nomeFicha, setNomeFicha ] = useState("");
   const [ descricaoFicha, setDescricaoFicha ] = useState("");
-  const [ grupoFicha, setGrupFicha ] = useState("")
+  const [ grupoFicha, setGrupoFicha ] = useState("")
+  const [ listaIngredientes, setListaIngredientes ] = useState([""]);
+  const [ ingredienteSelecionado, setIngredienteSelecionado ] = useState([""]);
+
+  // Métodos
+  // const adicionarIngrediente = (ingredienteId: string) => {
+   
+  // }
 
     return(
         <View>
@@ -54,6 +77,19 @@ export default function fichaCriar(){
               ))}
             </Picker>
           </View>
+            <View style={styles.box}>
+              <FlatList
+                data={ingredienteMock}
+                keyExtractor={(item) => item.id}
+                renderItem={({ item }) => (
+                  
+                  
+                    <Text>{}</Text>
+                  
+                )}
+              />
+            </View>
+
         </View>
 
         </View>
@@ -194,4 +230,8 @@ const styles = StyleSheet.create({
     color: "#000000",
     fontWeight: "700",
   },
+  box: {
+    width: '60%',
+    height: '40%',
+  }
 });

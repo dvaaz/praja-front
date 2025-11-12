@@ -121,9 +121,8 @@ export default function IngredienteCriar() {
             </Picker>
           </View>
         </View>
-
-        <View style={styles.footerButtons}>
-                  <TouchableOpacity
+        <View style={{ flexDirection: "row", gap: 12, marginTop: 20 , alignContent: "left"}}>
+          <TouchableOpacity
             style={[styles.actionButton, styles.cancelButton]}
             onPress={() => {
               // limpar formulario ou cancelar
@@ -133,8 +132,11 @@ export default function IngredienteCriar() {
               setGrupoIngrediente("");
             }}
           >
-            <Text style={styles.cancelText}>CANCELAR</Text>
+            <Text style={styles.cancelText}>Limpar</Text>
           </TouchableOpacity>
+        </View>
+        <View style={styles.footerButtons}>
+
 
           <TouchableOpacity
             style={[styles.actionButton, styles.okButton]}
@@ -147,8 +149,8 @@ export default function IngredienteCriar() {
                 grupo: grupoIngrediente,
               };
               console.log("submit", payload);
-              // navegar para trás ou limpar
-              router.back();
+       
+ 
             }}
           >
             <Text style={styles.okText}>OK</Text>
