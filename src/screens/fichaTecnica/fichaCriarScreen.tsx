@@ -73,7 +73,7 @@ export default function fichaCriar(){
             >
               <Picker.Item label="Escolha um grupo" value="" />
               {gruposMock.map((g) => (
-                <Picker.Item key={g.id} label={g.nome} value={g.id} />
+                <Picker.Item key={g.id} label={g.name} value={g.id} />
               ))}
             </Picker>
           </View>

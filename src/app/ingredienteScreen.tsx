@@ -4,8 +4,8 @@ import {
   StyleSheet,
   View
 } from "react-native";
-import { ImagemFundo } from "../../component/ImagemFundo";
-import { NavigationButton } from "../../component/NavigationButton";
+import { ImagemFundo } from "../component/ImagemFundo";
+import { NavigationButton } from "../component/NavigationButton";
 
 type CategoryProps = {
   id: string;
@@ -39,10 +39,10 @@ export default function Ingrediente() {
     // rota estática por id
     switch (categoria.id) {
       case "create":
-        router.navigate("/ingredienteCriar");
+        router.navigate("/../screens/ingrediente/ingredienteCriarScreen");
         break;
       case "search":
-        router.navigate("/ingredienteBuscar");
+        router.navigate("/../screens/ingrediente/ingredienteBuscarScreen");
         break;
       default:
         console.warn("Rota não configurada para", categoria.id);
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: '#FFF5F5',
+    backgroundColor: '#f9d4d4ff',
     gap: 40,
     height: '100%',
     width: '100%',

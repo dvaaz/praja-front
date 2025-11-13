@@ -5,9 +5,9 @@ import {
 } from "react-native";
 
 import { useRouter } from "expo-router";
-import { ImagemFundo } from "../../component/ImagemFundo";
-import { NavigationButton } from "../../component/NavigationButton";
-
+import { ImagemFundo } from "../component/ImagemFundo";
+import { NavigationButton } from "../component/NavigationButton";
+import { COLORS } from "../utils/constants";
 
 // Props
 type CategoryProps = {
@@ -22,14 +22,14 @@ const opcoes = [
   {
     id: "create",
     name: "Criar Nova Ficha Tecnica",
-    corDeFundo: "#FeFeFe",
-    corDeTexto: '#000000dc'
+    corDeFundo: COLORS.branco,
+    corDeTexto: COLORS.preto
   },
   {
     id: "search",
     name: "Buscar Ficha Tecnica",
-    corDeFundo: "#FEFEFE",
-    corDeTexto: '#000000dc'
+    corDeFundo: COLORS.branco,
+    corDeTexto: COLORS.preto
   },
 ];
 
@@ -44,10 +44,10 @@ export default function Ficha() {
     // rota estática por id
     switch (categoria.id) {
       case "create":
-        router.push("/fichaCriar");
+        router.navigate("/../screens/fichaTecnica/fichaCriarScreen");
         break;
       case "search":
-        router.push("/fichaBuscar");
+        router.navigate("/../screens/fichaTecnica/fichaBuscarScreen");
         break;
       default:
         console.warn("Rota não configurada para", categoria.id);

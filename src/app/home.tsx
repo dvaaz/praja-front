@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { GroupPlates } from "../../component/GroupPlates";
+import { GroupPlates } from "../component/GroupPlates";
 
 export default function Home() {
   //mock da api
