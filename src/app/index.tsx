@@ -1,4 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native';
+import { NavigationButton } from '../component/NavigationButton';
+import { router } from 'expo-router';
+import { COLOR } from '../utils/constants';
 
 export default function Tab() {
     return (
@@ -17,6 +20,20 @@ export default function Tab() {
                 Talvez não seja um tab ou menu de extrema importancia ao longo do uso, mas será importante
                 para os primeiros usos, logo ele pode ser retirado do tab e colocado apenas na main page e nas opções
             </Text>
+                <View style={styles.navGrid}>
+                    <NavigationButton
+                        name="Ir para ingredientes"
+                        buttonColor= {COLOR.blue}
+                        textColor={COLOR.branco}
+                        onPress={() => {router.navigate("/ingredienteScreen")}}
+                        />
+                    <NavigationButton
+                        name="Ir para Fichas Técnicas"
+                        buttonColor={COLOR.softPeach}
+                        textColor={COLOR.branco}
+                        onPress={() => {router.navigate("/fichaScreen")}}
+                        />
+                </View>
         </View>
     );
 }
@@ -32,5 +49,11 @@ const styles = StyleSheet.create({
         width: '60%',
         textAlign: "justify",
         wordWrap: "balance",
+    },
+    navGrid:{
+        gridAutoColumns: '1fr',
+        gridTemplateColumns: '1fr 1fr',
+        gap: 10,
+        marginTop: 20,
     }
 });

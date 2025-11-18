@@ -7,7 +7,7 @@ import {
 import { useRouter } from "expo-router";
 import { ImagemFundo } from "../component/ImagemFundo";
 import { NavigationButton } from "../component/NavigationButton";
-import { COLORS } from "../utils/constants";
+import { COLOR } from "../utils/constants";
 
 // Props
 type CategoryProps = {
@@ -22,14 +22,14 @@ const opcoes = [
   {
     id: "create",
     name: "Criar Nova Ficha Tecnica",
-    corDeFundo: COLORS.branco,
-    corDeTexto: COLORS.preto
+    corDeFundo: COLOR.branco,
+    corDeTexto: COLOR.preto
   },
   {
     id: "search",
     name: "Buscar Ficha Tecnica",
-    corDeFundo: COLORS.branco,
-    corDeTexto: COLORS.preto
+    corDeFundo: COLOR.branco,
+    corDeTexto: COLOR.preto
   },
 ];
 
@@ -44,10 +44,10 @@ export default function Ficha() {
     // rota estática por id
     switch (categoria.id) {
       case "create":
-        router.navigate("/../screens/fichaTecnica/fichaCriarScreen");
+        router.navigate("../../screens/fichaTecnica/fichaCriarScreen");
         break;
       case "search":
-        router.navigate("/../screens/fichaTecnica/fichaBuscarScreen");
+        router.navigate("../../screens/fichaTecnica/fichaBuscarScreen");
         break;
       default:
         console.warn("Rota não configurada para", categoria.id);

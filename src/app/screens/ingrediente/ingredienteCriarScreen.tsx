@@ -1,25 +1,24 @@
+import { COLOR, FONT_SIZE } from "@/src/utils/constants";
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Picker } from "@react-native-picker/picker";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import {
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View
 } from "react-native";
-import { ImagemFundo } from "../../../component/ImagemFundo";
-
-
 
 export default function IngredienteCriar() {
   const router = useRouter();
 
   const unMedida = [
-    { id: "g", nome: "Gramas" },
-    { id: "ml", nome: "Mililitros" },
-    { id: "UN", nome: "Unidade" }
+    // cod é a informação que será enviada para a API
+    { id: "UN", nome: "Unidade", cod: 0 },
+    { id: "g", nome: "Gramas", cod: 1 },
+    { id: "ml", nome: "Mililitros", cod: 2 }
   ];
   // mock
   const gruposMock = [
@@ -45,7 +44,7 @@ export default function IngredienteCriar() {
       >
         <FontAwesome style={styles.backArrow} size={28} name='arrow-left' />
       </TouchableOpacity>
-      <ImagemFundo />
+
 
       <View style={styles.field}>
         <Text style={styles.label}>Nome do Ingrediente:</Text>
@@ -134,9 +133,6 @@ export default function IngredienteCriar() {
         >
           <Text style={styles.cancelText}>Limpar</Text>
         </TouchableOpacity>
-      </View>
-      <View style={styles.footerButtons}>
-
 
         <TouchableOpacity
           style={[styles.actionButton, styles.okButton]}
@@ -163,9 +159,15 @@ export default function IngredienteCriar() {
 }
 
 const styles = StyleSheet.create({
-  safe: {
+  container: {
     flex: 1,
-    backgroundColor: "#FFF5F5",
+    width: '100%',
+    height: '100%',
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 40,
+    paddingHorizontal: 20,
+    backgroundColor: COLOR.background,
   },
   backButton: {
     width: 40,
@@ -182,32 +184,22 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#FFF5F5",
-  },
-  container: {
-    flex: 1,
-    width: '100%',
-    height: '100%',
-    justifyContent: "center",
-    alignItems: "center",
-    gap: 40,
-    paddingHorizontal: 20,
   },
   field: {
     width: "100%",
 
   },
   label: {
-    fontSize: 16,
+    fontSize: FONT_SIZE.md,
     marginBottom: 8,
     fontWeight: "bold",
   },
   input: {
     borderWidth: 1,
-    borderColor: "#ccc",
+    borderColor: COLOR.softtGray,
     borderRadius: 8,
     padding: 10,
-    backgroundColor: "#fff",
+    backgroundColor: COLOR.branco,
   },
   multiline: {
     height: 80,
@@ -215,9 +207,9 @@ const styles = StyleSheet.create({
   },
   pickerWrapper: {
     borderWidth: 1,
-    borderColor: "#ccc",
+    borderColor: COLOR.softtGray,
     borderRadius: 8,
-    backgroundColor: "#fff",
+    backgroundColor: COLOR.branco,
   },
   picker: {
     height: 50,
@@ -237,32 +229,32 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     borderWidth: 1.5,
     marginHorizontal: 8,
-    borderColor: "#ccc",
+    borderColor: COLOR.softtGray,
     alignItems: "center",
     justifyContent: "center",
   },
   unitButtonSelected: {
-    backgroundColor: "#007AFF",
-    borderColor: "#007AFF",
+    backgroundColor: COLOR.blue,
+    borderColor: COLOR.blue,
     elevation: 2,
   },
   unitText: {
-    fontSize: 16,
+    fontSize: FONT_SIZE.md,
     fontWeight: "700",
-    color: "#333",
+    color: COLOR.preto,
   },
   unitTextSelected: {
-    color: "#fff",
+    color: COLOR.branco,
   },
 
   helperText: {
     marginTop: 8,
-    fontSize: 12,
-    color: "#666",
+    fontSize: FONT_SIZE.sml,
+    color: COLOR.gray,
   },
   helperBold: {
     fontWeight: "700",
-    color: "#333",
+    color: COLOR.gray,
   },
   footerButtons: {
     marginTop: 12,

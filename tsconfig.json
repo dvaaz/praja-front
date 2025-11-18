@@ -13,5 +13,5 @@
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts"
-, "src/app/_layout.jsx", "src/app/homeScreen.tsx", "src/app/(tabs)/ficha.jsx", "src/app/(tabs)/ficha.jsx", "src/app/(tabs)/ingrediente.jsx"  ]
+, "src/app/_layout.jsx", "src/app/homeScreen.tsx", "src/app/(tabs)/ficha.jsx", "src/app/(tabs)/ficha.jsx", "src/app/(tabs)/ingrediente.jsx", "src/utils/constants.ts"  ]
 }

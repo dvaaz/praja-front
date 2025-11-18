@@ -2,7 +2,6 @@ import { Picker } from "@react-native-picker/picker";
 import React, { useState } from "react";
 import { FlatList, StyleSheet, Text, TextInput, View } from "react-native";
 
-
 export default function fichaCriar(){
 
   type IngredienteProps ={
