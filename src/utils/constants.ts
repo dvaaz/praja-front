@@ -20,5 +20,5 @@ export const FONT_SIZE = {
     xxx: 32,
 };
 
-export type Colors = typeof COLOR;
-export type FontSizes = typeof FONT_SIZE;
+export const SPACING = {
+};

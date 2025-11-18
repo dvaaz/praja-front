@@ -1,40 +1,43 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import { NavigationButton } from '../component/NavigationButton';
 import { router } from 'expo-router';
 import { COLOR } from '../utils/constants';
 
+
 export default function Tab() {
     return (
-        <View style={styles.container}>
-            <Text style={styles.text}>
-                Página principal tem de ser um index!
-            </Text>
-            <Text style={styles.text}>
-                Com cards referentes a funções diretas, enquanto o tab menu será para a função geral
-                exemplo:
-            </Text>
-            <Text style={styles.text}>
+<ScrollView>   
+            <View style={styles.container}>
+                <Text style={styles.text}>
+                    Página principal tem de ser um index!
+                </Text>
+                <Text style={styles.text}>
+                    Com cards referentes a funções diretas, enquanto o tab menu será para a função geral
+                    exemplo:
+                </Text>
+                <Text style={styles.text}>
                 tab ingredientes -> buscar ingredientes e criar ingredientes onde buscar ingrediente sera responsavel pelo gerenciamento.
-            </Text>
-            <Text style={styles.text}>
-                Talvez não seja um tab ou menu de extrema importancia ao longo do uso, mas será importante
-                para os primeiros usos, logo ele pode ser retirado do tab e colocado apenas na main page e nas opções
-            </Text>
+                </Text>
+                <Text style={styles.text}>
+                    Talvez não seja um tab ou menu de extrema importancia ao longo do uso, mas será importante
+                    para os primeiros usos, logo ele pode ser retirado do tab e colocado apenas na main page e nas opções
+                </Text>
                 <View style={styles.navGrid}>
                     <NavigationButton
                         name="Ir para ingredientes"
-                        buttonColor= {COLOR.blue}
+                        buttonColor={COLOR.blue}
                         textColor={COLOR.branco}
-                        onPress={() => {router.navigate("/ingredienteScreen")}}
-                        />
+                        onPress={() => { router.navigate("/ingredienteScreen") }}
+                    />
                     <NavigationButton
                         name="Ir para Fichas Técnicas"
                         buttonColor={COLOR.softPeach}
                         textColor={COLOR.branco}
-                        onPress={() => {router.navigate("/fichaScreen")}}
-                        />
+                        onPress={() => { router.navigate("/fichaScreen") }}
+                    />
                 </View>
-        </View>
+            </View>
+</ScrollView>
     );
 }
 
@@ -50,7 +53,7 @@ const styles = StyleSheet.create({
         textAlign: "justify",
         wordWrap: "balance",
     },
-    navGrid:{
+    navGrid: {
         gridAutoColumns: '1fr',
         gridTemplateColumns: '1fr 1fr',
         gap: 10,
