@@ -10,6 +10,7 @@
    npx expo install @react-navigation/drawer react-native-reanimated 
    npm install @react-native-picker/picker --save
    npm install react-icons --save
+   npm i react-native-paper
    ```
 
 2. Start the app

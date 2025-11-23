@@ -2,9 +2,9 @@ import { StyleSheet } from "react-native";
 import { FONT_SIZE } from "../../utils/constants";
 export const styles = StyleSheet.create({
     categoryButton: {
-        width: 280,
+        width: 120,
         alignSelf: "center",
-        paddingVertical: 14,
+        paddingVertical: 10,
         padding: 50,
         alignItems: "center",
         borderRadius: 40,

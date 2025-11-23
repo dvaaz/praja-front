@@ -1,11 +1,11 @@
 import { useRouter } from "expo-router";
 import {
-  FlatList,
-  StyleSheet,
-  View
+    FlatList,
+    StyleSheet,
+    View
 } from "react-native";
 import { ImagemFundo } from "../component/ImagemFundo";
-import { TitleButton } from "../component/TitleButton";
+import { PrimaryButton } from "../component/PrimaryButton";
 
 type CategoryProps = {
   id: string;
@@ -58,7 +58,7 @@ export default function Ingrediente() {
         data={opcoes}
         keyExtractor={(opcao) => opcao.id}
         renderItem={({ item: opcao }) => (
-          <TitleButton
+          <PrimaryButton
             name={opcao.name}
             onPress={() => handleCategoryPress(opcao)}
             buttonColor={opcao.corDeFundo}

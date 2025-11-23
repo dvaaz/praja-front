@@ -1,68 +1,110 @@
+import { PrimaryButton } from "@/component/PrimaryButton";
+import { COLOR, FONT_SIZE } from "@/utils/constants";
 import { Picker } from "@react-native-picker/picker";
-import React, { useState } from "react";
-import { FlatList, StyleSheet, Text, TextInput, View } from "react-native";
+import React from "react";
+import {
+    FlatList,
+    Modal,
+    Pressable,
+    StyleSheet,
+    Text,
+    TextInput,
+    View
+} from "react-native";
 
-export default function fichaCriar(){
-
-  type IngredienteProps ={
+export default function fichaCriar() {
+  type IngredienteProps = {
     id: string;
     name: string;
   };
 
-  const gruposMock  = [
+  const gruposMock = [
     { id: "cereal", name: "Vegetarianos" },
     { id: "frango", name: "Aves" },
     { id: "bovino", name: "Carnes" },
     { id: "legumes", name: "Sobremesas" }
   ];
 
-  const ingredienteMock: IngredienteProps[] =[
-    {id: "i1", name: "Sal"},
-    {id: "i2", name: "Açúcar"},
-    {id: "i3", name: "Farinha"},
-    {id: "i4", name: "Ovo"},
-    {id: "i5", name: "Leite"},
-    {id: "i6", name: "Manteiga"},
-    {id: "i7", name: "Fermento"},
-    {id: "i8", name: "Baunilha"},
+  const ingredienteMock: IngredienteProps[] = [
+    { id: "i1", name: "Sal" },
+    { id: "i2", name: "Açúcar" },
+    { id: "i3", name: "Farinha" },
+    { id: "i4", name: "Ovo" },
+    { id: "i5", name: "Leite" },
+    { id: "i6", name: "Manteiga" },
+    { id: "i7", name: "Fermento" },
+    { id: "i8", name: "Baunilha" },
   ]
 
   // Hooks
-  const [ nomeFicha, setNomeFicha ] = useState("");
-  const [ descricaoFicha, setDescricaoFicha ] = useState("");
-  const [ grupoFicha, setGrupoFicha ] = useState("")
-  const [ listaIngredientes, setListaIngredientes ] = useState([""]);
-  const [ ingredienteSelecionado, setIngredienteSelecionado ] = useState([""]);
+  const [nomeFicha, setNomeFicha] = React.useState("");
+  const [descricaoFicha, setDescricaoFicha] = React.useState("");
+  const [grupoFicha, setGrupoFicha] = React.useState("")
+  const [listaIngredientes, setListaIngredientes] = React.useState([""]);
+  const [ingredienteSelecionado, setIngredienteSelecionado] = React.useState([""]);
+  // Modal
+  const [modalVisible, setModalVisible] = React.useState(false);
 
   // Métodos
   // const adicionarIngrediente = (ingredienteId: string) => {
-   
+
   // }
 
-    return(
-        <View>
-        <View style={styles.field}>
-          <Text style={styles.label}>Nome da Ficha Tecnica:</Text>
-          <TextInput
-            value={nomeFicha}
-            onChangeText={setNomeFicha}
-            placeholder="Digite o nome da Ficha Tecnica"
-            style={styles.input}
-          />
+  return (
+    <View>
+      <View style={styles.field}>
+        <Text style={styles.label}>Nome da Ficha Tecnica:</Text>
+        <TextInput
+          value={nomeFicha}
+          onChangeText={setNomeFicha}
+          placeholder="Digite o nome da Ficha Tecnica"
+          style={styles.input}
+        />
+      </View>
+
+      <View style={styles.field}>
+        <Text >
+          <Pressable style={styles.label}
+           onPress={() => setModalVisible(true)} >
+            Adicionar Descrição
+          </Pressable>
+          </Text>
+        <Modal
+        visible={modalVisible}
+        onRequestClose={() => setModalVisible(false)}
+      >
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Text style={styles.modalText}>Descrição da Ficha Tecnica:</Text>
+        <TextInput
+          value={descricaoFicha}
+          onChangeText={setDescricaoFicha}
+          placeholder="Digite a descrição da Ficha Tecnica"
+          style={[styles.input, styles.multiline]}
+          multiline
+          numberOfLines={3}
+        />
+        <View style={styles.footerPressables}>
+        <PrimaryButton
+          name="Cancelar"
+          onPress={() => setModalVisible(false)}
+          buttonColor={COLOR.danger}
+          textColor= {COLOR.branco}
+          
+        />
+        <PrimaryButton
+          name="Confirmar"
+          onPress={() => setModalVisible(false)}
+          buttonColor={COLOR.info}
+          height={40}
+        />
         </View>
+        </View>
+        </View>
+        </Modal>
+
 
         <View style={styles.field}>
-          <Text style={styles.label}>Descrição da Ficha Tecnica:</Text>
-          <TextInput
-            value={descricaoFicha}
-            onChangeText={setDescricaoFicha}
-            placeholder="Digite a descrição da Ficha Tecnica"
-            style={[styles.input, styles.multiline]}
-            multiline
-            numberOfLines={3}
-          />
-
-                  <View style={styles.field}>
           <Text style={styles.label}>Selecione um grupo:</Text>
           <View style={styles.pickerWrapper}>
             <Picker
@@ -76,24 +118,24 @@ export default function fichaCriar(){
               ))}
             </Picker>
           </View>
-            <View style={styles.box}>
-              <FlatList
-                data={ingredienteMock}
-                keyExtractor={(item) => item.id}
-                renderItem={({ item }) => (
-                  
-                  
-                    <Text>{}</Text>
-                  
-                )}
-              />
-            </View>
+          <View style={styles.box}>
+            <FlatList
+              data={ingredienteMock}
+              keyExtractor={(item) => item.id}
+              renderItem={({ item }) => (
+
+
+                <Text>{ }</Text>
+
+              )}
+            />
+          </View>
 
         </View>
 
-        </View>
-        </View>
-)
+      </View>
+    </View>
+  )
 
 }
 
@@ -102,7 +144,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#FFF5F5",
   },
-  backButton: {
+  backPressable: {
     width: 40,
     height: 40,
     alignItems: "center",
@@ -117,7 +159,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#FFF5F5",
+    backgroundColor: COLOR.branco,
   },
   container: {
     flex: 1,
@@ -130,19 +172,19 @@ const styles = StyleSheet.create({
   },
   field: {
     width: "100%",
-    
+
   },
   label: {
-    fontSize: 16,
+    fontSize: FONT_SIZE.md,
     marginBottom: 8,
     fontWeight: "bold",
   },
   input: {
     borderWidth: 1,
-    borderColor: "#ccc",
+    borderColor: COLOR.softtGray,
     borderRadius: 8,
     padding: 10,
-    backgroundColor: "#fff",
+    backgroundColor: COLOR.branco,
   },
   multiline: {
     height: 80,
@@ -165,7 +207,7 @@ const styles = StyleSheet.create({
     gap: 12,
     margin: 10,
   },
-  unitButton: {
+  unitPressable: {
     width: 44,
     height: 44,
     borderRadius: 40,
@@ -176,7 +218,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  unitButtonSelected: {
+  unitPressableSelected: {
     backgroundColor: "#007AFF",
     borderColor: "#007AFF",
     elevation: 2,
@@ -199,13 +241,13 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     color: "#333",
   },
-    footerButtons: {
+  footerPressables: {
     marginTop: 12,
     flexDirection: "row",
     justifyContent: "space-between",
     gap: 12,
   },
-  actionButton: {
+  actionPressable: {
     flex: 1,
     height: 48,
     width: 80,
@@ -213,24 +255,46 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  cancelButton: {
+  cancelPressable: {
     backgroundColor: "#fff",
     borderWidth: 1,
     borderColor: "#E53935",
   },
-  okButton: {
+  okPressable: {
     backgroundColor: "#1976D2",
   },
   cancelText: {
     color: "#E53935",
     fontWeight: "700",
   },
-    okText: {
-    color: "#000000",
+  okText: {
+    color: COLOR.preto,
     fontWeight: "700",
   },
   box: {
     width: '60%',
     height: '40%',
+  },
+  // modal
+  modalView: {
+    margin: 20,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: "center"
   }
+  
+  
 });

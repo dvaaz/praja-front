@@ -37,7 +37,7 @@ export default function Login() {
                     secureTextEntry 
                 />
                 <Text style={styles.newAccountText}
-                onPress={() => {router.navigate("/registration")}}>
+                onPress={() => {router.navigate("./registration")}}>
                     Caso não tenha uma conta,  clique aqui
                 </Text>
 

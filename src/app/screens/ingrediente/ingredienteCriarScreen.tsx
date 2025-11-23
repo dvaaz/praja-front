@@ -1,4 +1,4 @@
-import { COLOR, FONT_SIZE } from "@/src/utils/constants";
+import { COLOR, FONT_SIZE } from "@/utils/constants";
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Picker } from "@react-native-picker/picker";
 import { useRouter } from "expo-router";
@@ -291,5 +291,25 @@ const styles = StyleSheet.create({
   okText: {
     color: COLOR.preto,
     fontWeight: "700",
+  },
+  // modal styles
+  modalView: {
+    margin: 20,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+    modalText: {
+    marginBottom: 15,
+    textAlign: 'center',
   },
 });

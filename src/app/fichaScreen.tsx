@@ -1,12 +1,12 @@
 import {
-  FlatList,
-  StyleSheet,
-  View
+    FlatList,
+    StyleSheet,
+    View
 } from "react-native";
 
 import { useRouter } from "expo-router";
 import { ImagemFundo } from "../component/ImagemFundo";
-import { TitleButton } from "../component/TitleButton";
+import { PrimaryButton } from "../component/PrimaryButton";
 import { COLOR } from "../utils/constants";
 
 // Props
@@ -62,7 +62,7 @@ export default function Ficha() {
         data={opcoes}
         keyExtractor={(opcao) => opcao.id}
         renderItem={({ item: opcao }) => (
-          <TitleButton
+          <PrimaryButton
             name={opcao.name}
             onPress={() => handleCategoryPress(opcao)} // em breve um navigation
             buttonColor={opcao.corDeFundo}

@@ -1,7 +1,8 @@
+import { PrimaryButton } from "@/component/PrimaryButton";
+import { COLOR, FONT_SIZE } from "@/utils/constants";
 import { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { TextInput } from "react-native-web";
-import { COLOR, FONT_SIZE } from "../../../utils/constants";
 
 export default function Registration() {
     // Hooks
@@ -32,6 +33,7 @@ export default function Registration() {
             <Text>
                 {error}
             </Text>
+            <PrimaryButton name="Registrar"/>
             </View>
     )
 }

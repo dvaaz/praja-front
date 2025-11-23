@@ -1,4 +1,5 @@
 
+
 export const COLOR = {
     background: '#f7f0ecff',
     branco: '#FEFEFE',
@@ -14,11 +15,14 @@ export const COLOR = {
 
 export const FONT_SIZE = {
     sml: 10,
-    md: 14,
-    large: 18,
+    md: 12,
+    large: 16,
     xlarge: 20,
     xxx: 24,
 };
 
 export const SPACING = {
 };
+
+
+
