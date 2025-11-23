@@ -1,18 +1,18 @@
 import {
-    Text,
-    TouchableOpacity,
-    TouchableOpacityProps,
-    View
+  Text,
+  TouchableOpacity,
+  TouchableOpacityProps,
+  View
 } from "react-native";
 import { styles } from "./styles";
 
-type NavigationButtonProps = {
+type TitleButtonProps = {
   name: string;
   buttonColor?: string;
   textColor?: string;
 } & TouchableOpacityProps;
 
-export const NavigationButton = ({ name, buttonColor, textColor, ...rest }: NavigationButtonProps) => {
+export const TitleButton = ({ name, buttonColor, textColor, ...rest }: TitleButtonProps) => {
     return (
         <View>
         <TouchableOpacity

@@ -5,7 +5,7 @@ import {
   View
 } from "react-native";
 import { ImagemFundo } from "../component/ImagemFundo";
-import { NavigationButton } from "../component/NavigationButton";
+import { TitleButton } from "../component/TitleButton";
 
 type CategoryProps = {
   id: string;
@@ -58,7 +58,7 @@ export default function Ingrediente() {
         data={opcoes}
         keyExtractor={(opcao) => opcao.id}
         renderItem={({ item: opcao }) => (
-          <NavigationButton
+          <TitleButton
             name={opcao.name}
             onPress={() => handleCategoryPress(opcao)}
             buttonColor={opcao.corDeFundo}

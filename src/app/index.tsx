@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
-import { NavigationButton } from '../component/NavigationButton';
+import { TitleButton } from '../component/TitleButton';
 import { router } from 'expo-router';
 import { COLOR } from '../utils/constants';
 
@@ -23,17 +23,23 @@ export default function Tab() {
                     para os primeiros usos, logo ele pode ser retirado do tab e colocado apenas na main page e nas opções
                 </Text>
                 <View style={styles.navGrid}>
-                    <NavigationButton
+                    <TitleButton
                         name="Ir para ingredientes"
                         buttonColor={COLOR.blue}
                         textColor={COLOR.branco}
                         onPress={() => { router.navigate("/ingredienteScreen") }}
                     />
-                    <NavigationButton
+                    <TitleButton
                         name="Ir para Fichas Técnicas"
                         buttonColor={COLOR.softPeach}
                         textColor={COLOR.branco}
                         onPress={() => { router.navigate("/fichaScreen") }}
+                    />
+                    <TitleButton
+                        name="Ir para Login"
+                        buttonColor={COLOR.blue}
+                        textColor={COLOR.branco}
+                        onPress={() => { router.navigate("../../screens/auth/login") }}
                     />
                 </View>
             </View>

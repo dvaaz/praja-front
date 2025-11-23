@@ -6,7 +6,7 @@ import {
 
 import { useRouter } from "expo-router";
 import { ImagemFundo } from "../component/ImagemFundo";
-import { NavigationButton } from "../component/NavigationButton";
+import { TitleButton } from "../component/TitleButton";
 import { COLOR } from "../utils/constants";
 
 // Props
@@ -62,7 +62,7 @@ export default function Ficha() {
         data={opcoes}
         keyExtractor={(opcao) => opcao.id}
         renderItem={({ item: opcao }) => (
-          <NavigationButton
+          <TitleButton
             name={opcao.name}
             onPress={() => handleCategoryPress(opcao)} // em breve um navigation
             buttonColor={opcao.corDeFundo}
