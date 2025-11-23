@@ -10,16 +10,17 @@ type TitleButtonProps = {
   name: string;
   buttonColor?: string;
   textColor?: string;
+  fontSize?: number;
 } & TouchableOpacityProps;
 
-export const TitleButton = ({ name, buttonColor, textColor, ...rest }: TitleButtonProps) => {
+export const TitleButton = ({ name, buttonColor,  ...rest }: TitleButtonProps) => {
     return (
         <View>
         <TouchableOpacity
             style={[styles.categoryButton, { backgroundColor: buttonColor }]}
             {...rest}
         >
-            <Text style={[styles.buttonText, {color: textColor}]}>
+            <Text style={[styles.buttonText, {color: rest.textColor}, {fontSize: rest.fontSize} ]}>
             {name}</Text>
       </TouchableOpacity>
         </View>

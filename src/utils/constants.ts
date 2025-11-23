@@ -13,11 +13,11 @@ export const COLOR = {
 };
 
 export const FONT_SIZE = {
-    sml: 12,
-    md: 16,
+    sml: 10,
+    md: 14,
     large: 18,
-    xlarge: 22,
-    xxx: 32,
+    xlarge: 20,
+    xxx: 24,
 };
 
 export const SPACING = {

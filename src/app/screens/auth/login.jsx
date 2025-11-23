@@ -1,3 +1,4 @@
+import { useRouter } from "expo-router";
 import { useState } from "react";
 import {
     StyleSheet,
@@ -5,9 +6,9 @@ import {
     TextInput,
     View
 } from "react-native";
-import { TitleButton } from "../../../component/TitleButton";
-
+import { COLOR, FONT_SIZE } from "../../../utils/constants";
 export default function Login() {
+    const router = useRouter();
     // estados do componente
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -35,8 +36,11 @@ export default function Login() {
                     onChangeText={setPassword}
                     secureTextEntry 
                 />
-                <TitleButton
-                    name="Criar nova conta" />
+                <Text style={styles.newAccountText}
+                onPress={() => {router.navigate("/registration")}}>
+                    Caso não tenha uma conta,  clique aqui
+                </Text>
+
             </View>
         )
 }
@@ -44,11 +48,17 @@ export default function Login() {
 const styles = StyleSheet.create({
     input: {
         height:50,
-        borderColor:'#ccc',
+        borderColor: COLOR.gray,
         borderWidth: 1,
         paddingHorizontal: 15,
-        fontSize: 16,
-        backgroundColor: "#fefe",
+        fontSize: FONT_SIZE.md,
+        backgroundColor: COLOR.branco,
         marginBottom:20,
+    },
+    newAccountText: {
+        fontSize: FONT_SIZE.md,
+        color: COLOR.blue,
+        textAlign: "center",
+        marginTop: 10,
     },
 })
