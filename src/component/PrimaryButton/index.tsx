@@ -1,10 +1,10 @@
+import { FONT_SIZE } from "@/utils/constants";
 import {
+    StyleSheet,
     Text,
     TouchableOpacity,
-    TouchableOpacityProps,
-    View
+    TouchableOpacityProps
 } from "react-native";
-import { styles } from "./styles";
 
 type PrimaryButtonProps = {
   name: string;
@@ -12,13 +12,14 @@ type PrimaryButtonProps = {
   textColor?: string;
   fontSize?: number;
   height?: number;
+  width?: number;
   
 
 } & TouchableOpacityProps;
 
-export const PrimaryButton = ({ name, buttonColor,  ...rest }: PrimaryButtonProps) => {
+export const PrimaryButton = ({ name, buttonColor, ...rest }: PrimaryButtonProps) => {
     return (
-        <View>
+
         <TouchableOpacity
             style={[styles.categoryButton, { backgroundColor: buttonColor }]}
             {...rest}
@@ -26,7 +27,26 @@ export const PrimaryButton = ({ name, buttonColor,  ...rest }: PrimaryButtonProp
             <Text style={[styles.buttonText, {color: rest.textColor}, {fontSize: rest.fontSize} ]}>
             {name}</Text>
       </TouchableOpacity>
-        </View>
+
     );
 };
 
+export const styles = StyleSheet.create({
+    categoryButton: {
+        width: "auto",
+        height:"auto",
+        alignSelf: "center",
+        paddingVertical: 2,
+        padding: 4,
+        alignItems: "center",
+        borderRadius: 20,
+        marginTop: 8,
+        borderWidth: 0.5
+    },
+    buttonText: {
+        fontSize: FONT_SIZE.sml,
+        padding: 5,
+        fontWeight: '600',
+        textAlign: "center"
+    },
+});

@@ -14,8 +14,8 @@ export const ToolTip = ({ message, img }: ToolTipProps) => {
             <IconButton
                 icon={img}
                 size={16}
-                onHoverIn={() => {}}
-                onHoverOut={() => {}}
+                onPress={() => {}}
+                             
                 // ajuste de posicionamento pode ser necessário dependendo do contexto
                 style={{ marginTop: -4, marginLeft: 4 }}
             />

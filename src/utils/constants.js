@@ -14,10 +14,11 @@ export const COLOR = {
 };
 
 export const FONT_SIZE = {
+    xsml: 8,
     sml: 10,
     md: 12,
-    large: 16,
-    xlarge: 20,
+    large: 14,
+    xlarge: 18,
     xxx: 24,
 };
 
