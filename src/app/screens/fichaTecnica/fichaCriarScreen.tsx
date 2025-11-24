@@ -153,57 +153,56 @@ export default function fichaCriar() {
                     {/* será necessário calibrar uma caixa de tamanho fixo */}
 
                     <View style={styles.centeredView}>
-                        <Text style={styles.info}>Disponíveis
-                            <Picker
-                                selectedValue={grupoIngredientesSelecionado}
-                                onValueChange={(value) => {
-                                    setGrupoIngredientesSelecionado(value);
 
-                                    // Filtra somente os ingredientes deste grupo
-                                    // e exclui os já selecionados
-                                    // como fazer quando entrar o api?
-                                    const filtered = ingredienteMock.filter(
-                                        (i) =>
-                                            i.grupo === value &&
-                                            !ingredienteSelecionado.some(sel => sel.id === i.id)
-                                    );
+                        <Picker
+                            selectedValue={grupoIngredientesSelecionado}
+                            onValueChange={(value) => {
+                                setGrupoIngredientesSelecionado(value);
 
-                                    setListaIngredientes(filtered); // :-)
-                                }}
-                                style={styles.picker}
-                            >
-                                <Picker.Item
-                                    label="Grupo de Ingredientes" value="" />
-                                {grupoIngredientesMock.map((g) => (
-                                    <Picker.Item key={g.id} label={g.name} value={g.id} />
-                                ))}
-                            </Picker>
-                        </Text>
+                                // Filtra somente os ingredientes deste grupo
+                                // e exclui os já selecionados
+                                // como fazer quando entrar o api?
+                                const filtered = ingredienteMock.filter(
+                                    (i) =>
+                                        i.grupo === value &&
+                                        !ingredienteSelecionado.some(sel => sel.id === i.id)
+                                );
+
+                                setListaIngredientes(filtered); // :-)
+                            }}
+                            style={styles.picker}
+                        >
+                            <Picker.Item
+                                label="Grupo de Ingredientes" value="" />
+                            {grupoIngredientesMock.map((g) => (
+                                <Picker.Item key={g.id} label={g.name} value={g.id} />
+                            ))}
+                        </Picker>
+
 
                         <View style={styles.box}>
 
-                            <View >
 
-                                <FlatList
-                                    data={listaIngredientes}
-                                    keyExtractor={(item) => item.id}
-                                    renderItem={({ item }) => (
-                                        <Pressable
-                                            onPress={() => {
-                                                // remove da lista de disponíveis
-                                                setListaIngredientes(prev =>
-                                                    prev.filter(i => i.id !== item.id)
-                                                );
 
-                                                // adiciona na lista de selecionados
-                                                setIngredienteSelecionado(prev => [...prev, item]);
-                                            }}
-                                        >
-                                            <Text>{item.name}</Text>
-                                        </Pressable>
-                                    )}
-                                />
-                            </View>
+                            <FlatList
+                                data={listaIngredientes}
+                                keyExtractor={(item) => item.id}
+                                renderItem={({ item }) => (
+                                    <Pressable
+                                        onPress={() => {
+                                            // remove da lista de disponíveis
+                                            setListaIngredientes(prev =>
+                                                prev.filter(i => i.id !== item.id)
+                                            );
+
+                                            // adiciona na lista de selecionados
+                                            setIngredienteSelecionado(prev => [...prev, item]);
+                                        }}
+                                    >
+                                        <Text>{item.name}</Text>
+                                    </Pressable>
+                                )}
+                            />
                         </View>
 
                         <Text style={styles.info}>Selecionados</Text>
@@ -217,6 +216,27 @@ export default function fichaCriar() {
                         </View>
                     </View>
                 </View>
+                        <PrimaryButton
+                            name="Cancelar"
+                            onPress={() => setModalVisible(false)}
+                            buttonColor={COLOR.danger}
+                            textColor={COLOR.branco}
+
+                        />
+                        <PrimaryButton
+                            name="Confirmar"
+                            buttonColor={COLOR.info}
+                            height={40}
+                            onPress={() => {
+                            // enviar dados para API. Necessario criar um endpoint para registrar a ficha e seus ingredientes sem medidas e descricoes
+                            const payload = {
+                            nome: nomeFicha,
+                            descricao: descricaoFicha,
+                            listaIngredientes: ingredienteSelecionado,
+                            grupo: grupoFicha,
+                            };
+                        }}
+                        />
             </View>
 
         </ScrollView>
@@ -368,8 +388,8 @@ const styles = StyleSheet.create({
         borderRadius: 8,
         padding: 10,
         backgroundColor: COLOR.branco,
-        width: '80%',
-        height: '40%',
+        width: '95%',
+        height: 120,
     },
     // modal
     modalView: {
