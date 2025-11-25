@@ -37,15 +37,6 @@ export default function IngredienteCriar() {
   return (
 
     <View style={styles.container}>
-      <TouchableOpacity
-        onPress={() => router.back()}
-        style={styles.backButton}
-        accessibilityLabel="Voltar"
-      >
-        <FontAwesome style={styles.backArrow} size={28} name='arrow-left' />
-      </TouchableOpacity>
-
-
       <View style={styles.field}>
         <Text style={styles.label}>Nome do Ingrediente:</Text>
         <TextInput
@@ -121,6 +112,13 @@ export default function IngredienteCriar() {
         </View>
       </View>
       <View style={styles.clearButton}>
+        <TouchableOpacity
+        onPress={() => router.back()}
+        style={styles.backButton}
+        accessibilityLabel="Voltar"
+      >
+        <FontAwesome style={styles.backArrow} size={28} name='arrow-left' />
+      </TouchableOpacity>
         <TouchableOpacity
           style={[styles.actionButton, styles.cancelButton]}
           onPress={() => {

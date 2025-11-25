@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { GroupPlates } from "../component/GroupPlates";
 
-export default function Home() {
+export default function ServicoDia() {
   //mock da api
   const groups = [
     {
