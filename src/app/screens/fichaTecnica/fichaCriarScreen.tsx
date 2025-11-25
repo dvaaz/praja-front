@@ -8,7 +8,7 @@ import {
     StyleSheet,
     Text,
     TextInput,
-    View,
+    View
 } from "react-native";
 // self-made
 import { Plus } from "@/component/PlusIcon";
@@ -71,7 +71,8 @@ export default function fichaCriar() {
     // }
 
     return (
-        <ScrollView>
+        <ScrollView
+            nestedScrollEnabled={true}>
             <View style={styles.container}>
                 <View style={styles.field}>
                     <Text style={styles.label}>Nome da Ficha Tecnica:</Text>
@@ -83,7 +84,7 @@ export default function fichaCriar() {
                     />
                 </View>
 
-                <View style={styles.field}>
+                <View style={styles.addDescriptionField}>
                     <Tooltip title={"Você também pode adicionar uma descrição após ficha estar pronta"}>
                         <Text style={styles.label}> Adicionar descrição à Ficha Tecnica </Text>
                     </Tooltip>
@@ -92,7 +93,7 @@ export default function fichaCriar() {
                         onPress={() => setModalVisible(true)}
                         onPressOut={() => setModalVisible(false)}
                     >
-                        <Plus size={FONT_SIZE.sml} color={COLOR.branco} bgColor={COLOR.blue} />
+                        <Plus size={FONT_SIZE.md} color={COLOR.branco} bgColor={COLOR.blue} />
 
                         <Modal
                             visible={modalVisible}
@@ -150,15 +151,15 @@ export default function fichaCriar() {
 
                 <View style={styles.field}>
                     <Text style={styles.label}>Selecione os ingredientes para a Ficha Técnica:</Text>
-                    {/* será necessário calibrar uma caixa de tamanho fixo */}
+                    {/* será necessário calibrar uma caixa de tamanho fixo - done*/}
 
                     <View style={styles.centeredView}>
 
-                        <Picker 
+                        <Picker
                             selectedValue={grupoIngredientesSelecionado}
+                            // alterar para se nenhum grupo selecionado, mostrar todos os ingredientes disponíveis (buscar lógica para isso)
                             onValueChange={(value) => {
                                 setGrupoIngredientesSelecionado(value);
-
                                 // Filtra somente os ingredientes deste grupo
                                 // e exclui os já selecionados
                                 // como fazer quando entrar o api?
@@ -172,7 +173,9 @@ export default function fichaCriar() {
                             }}
                             style={[styles.picker, { width: '95%' }]}
                         >
-                            <Picker.Item 
+                            <Picker.Item
+                                // ocultar label quando picker estiver aberto
+
                                 label="Grupo de Ingredientes" value="" />
                             {grupoIngredientesMock.map((g) => (
                                 <Picker.Item key={g.id} label={g.name} value={g.id} />
@@ -212,27 +215,32 @@ export default function fichaCriar() {
                         </View>
                     </View>
                 </View>
-                        <PrimaryButton
-                            name="Cancelar"
-                            onPress={() => setModalVisible(false)}
-                            buttonColor={COLOR.danger}
-                            textColor={COLOR.branco}
+                <View style={styles.clearButton}>
 
-                        />
-                        <PrimaryButton
-                            name="Confirmar"
-                            buttonColor={COLOR.info}
-                            height={40}
-                            onPress={() => {
+                    <PrimaryButton
+                        name="Cancelar"
+                        onPress={() => setModalVisible(false)}
+                        buttonColor={COLOR.danger}
+                        textColor={COLOR.branco}
+
+                    />
+                    <PrimaryButton
+                        name="Confirmar"
+                        style={[styles.actionButton, styles.okButton]}
+                        onPress={() => {
                             // enviar dados para API. Necessario criar um endpoint para registrar a ficha e seus ingredientes sem medidas e descricoes
                             const payload = {
-                            nome: nomeFicha,
-                            descricao: descricaoFicha,
-                            listaIngredientes: ingredienteSelecionado,
-                            grupo: grupoFicha,
+                                nome: nomeFicha,
+                                descricao: descricaoFicha,
+                                listaIngredientes: ingredienteSelecionado,
+                                grupo: grupoFicha,
                             };
+                            console.log("submit", payload);
                         }}
-                        />
+                    >
+                    </PrimaryButton>
+
+                </View>
             </View>
 
         </ScrollView>
@@ -269,7 +277,10 @@ const styles = StyleSheet.create({
     },
     field: {
         width: "100%",
-
+    },
+    addDescriptionField: {
+        width: "100%",
+        flexDirection: "row",
     },
     label: {
         fontSize: FONT_SIZE.large,
@@ -348,9 +359,10 @@ const styles = StyleSheet.create({
         color: "#333",
     },
     footerPressables: {
-
+        alignContent: "flex-end",
         flexDirection: "row",
         justifyContent: "space-between",
+
         gap: 8,
     },
     actionPressable: {
@@ -406,7 +418,29 @@ const styles = StyleSheet.create({
     modalText: {
         marginBottom: 15,
         textAlign: "center"
-    }
+    },
+    cancelButton: {
+        backgroundColor: COLOR.branco,
+        borderWidth: 1,
+        borderColor: COLOR.danger,
+    },
+    clearButton: {
+        flexDirection: "row",
+        gap: 12,
+        marginTop: 20,
+        alignItems: "flex-start",
+    },
+    okButton: {
+        backgroundColor: COLOR.blue,
+    },
+      actionButton: {
+    flex: 1,
+    height: 48,
+    width: 80,
+    borderRadius: 8,
+    alignItems: "center",
+    justifyContent: "center",
+  },
 
 
 });
