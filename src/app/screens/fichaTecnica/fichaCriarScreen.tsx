@@ -154,7 +154,7 @@ export default function fichaCriar() {
 
                     <View style={styles.centeredView}>
 
-                        <Picker
+                        <Picker 
                             selectedValue={grupoIngredientesSelecionado}
                             onValueChange={(value) => {
                                 setGrupoIngredientesSelecionado(value);
@@ -170,19 +170,15 @@ export default function fichaCriar() {
 
                                 setListaIngredientes(filtered); // :-)
                             }}
-                            style={styles.picker}
+                            style={[styles.picker, { width: '95%' }]}
                         >
-                            <Picker.Item
+                            <Picker.Item 
                                 label="Grupo de Ingredientes" value="" />
                             {grupoIngredientesMock.map((g) => (
                                 <Picker.Item key={g.id} label={g.name} value={g.id} />
                             ))}
                         </Picker>
-
-
                         <View style={styles.box}>
-
-
 
                             <FlatList
                                 data={listaIngredientes}
