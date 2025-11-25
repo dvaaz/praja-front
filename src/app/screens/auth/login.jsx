@@ -7,6 +7,8 @@ import {
     View
 } from "react-native";
 import { COLOR, FONT_SIZE } from "../../../utils/constants";
+import { PrimaryButton } from "../../components/Buttons/PrimaryButton";
+
 export default function Login() {
     const router = useRouter();
     // estados do componente
@@ -18,27 +20,50 @@ export default function Login() {
         return (
             <View>
                 <Text>
-                    Digite seu email
+                    Digite seu telefone
                 </Text>
                 <TextInput   style={styles.input} 
-                placeholder="Email"
+                placeholder=""
                     value={email}
                     onChangeText={setEmail}
-                    keyboardType="email-address" 
+                    keyboardType="phone-pad" 
                 />
 
                 <Text>
                     Digite sua senha
                 </Text>
                 <TextInput style={styles.input}
-                placeholder="Senha"
+                placeholder=""
                     value={password}
                     onChangeText={setPassword}
                     secureTextEntry 
                 />
+
+                <View>
+                    <PrimaryButton
+                    text="Entrar"
+                    onPress={() => {
+                        // verifica se os campos não estão vazios
+                        if (email === "" || password === "") {
+                            setError("Por favor, preencha todos os campos.");
+                            return;
+                        }
+                        // lógica de autenticação aqui
+                        // se falhar, definir mensagem de erro
+                        // setError("Credenciais inválidas. Tente novamente.");
+                    
+
+                    }}
+                    />
+                    </View>
+
+                {error !== "" && (
+                    <Text style={{ color: "red", marginTop: 10 }}>{error}</Text>
+                )}
+
                 <Text style={styles.newAccountText}
                 onPress={() => {router.navigate("./registration")}}>
-                    Caso não tenha uma conta,  clique aqui
+                    Caso não possua uma conta,  clique aqui
                 </Text>
 
             </View>
@@ -48,6 +73,7 @@ export default function Login() {
 const styles = StyleSheet.create({
     input: {
         height:50,
+        width: '80%',
         borderColor: COLOR.gray,
         borderWidth: 1,
         paddingHorizontal: 15,
