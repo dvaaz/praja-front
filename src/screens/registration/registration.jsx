@@ -19,9 +19,9 @@ export default function Registration() {
                 Digite seu nome
             </Text>
             <TextInput style={styles.input} 
-            value={nome} onChangeText={setNome} keyboardType="default"/>
+            value={nome} onChangeText={setNome} keyboardType="phone-pad"/>
             <Text>
-                Digite seu email
+                Digite seu telefone, apenas números
             </Text>
             <TextInput style={styles.input} 
             value={email} onChangeText={setEmail} keyboardType="email-address"/>

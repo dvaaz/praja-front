@@ -19,7 +19,7 @@ export const FONT_SIZE = {
     md: 12,
     large: 14,
     xlarge: 18,
-    xxx: 24,
+    xxlarge: 24,
 };
 
 export const SPACING = {

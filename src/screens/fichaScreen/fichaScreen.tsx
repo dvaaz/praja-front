@@ -1,13 +1,13 @@
 import {
-    FlatList,
-    StyleSheet,
-    View
+  FlatList,
+  StyleSheet,
+  View
 } from "react-native";
 
 import { useRouter } from "expo-router";
-import { ImagemFundo } from "../component/ImagemFundo";
-import { PrimaryButton } from "../component/PrimaryButton";
-import { COLOR } from "../utils/constants";
+import { ImagemFundo } from "../../component/ImagemFundo";
+import { PrimaryButton } from "../../component/PrimaryButton";
+import { COLOR } from "../../utils/constants";
 
 // Props
 type CategoryProps = {

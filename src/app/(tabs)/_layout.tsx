@@ -31,7 +31,7 @@ export default function Layout() {
             }                  // Oculta o index do drawer
           }}
         />
-                <Drawer.Screen
+        <Drawer.Screen
           name='../../screens/auth/login'
           options={{
             headerShown: false,              // Oculta o cabeçalho na tela de login
